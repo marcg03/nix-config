@@ -66,6 +66,7 @@
     {
       nixosConfigurations = {
         "thinkpad-x230" = mkNixosConfiguration "thinkpad-x230" "marcg";
+        "lenovo-loq" = mkNixosConfiguration "lenovo-loq" "marcg";
       };
     };
 }
