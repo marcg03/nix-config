@@ -1,8 +1,13 @@
-{ config, pkgs, ... }:
+{
+  pkgs,
+  userConfig,
+  xkbLayout,
+  ...
+}:
 
 {
-  home.username = "marcg";
-  home.homeDirectory = "/home/marcg";
+  home.username = "${userConfig.name}";
+  home.homeDirectory = "/home/${userConfig.name}";
 
   fonts.fontconfig.enable = true;
 
@@ -60,11 +65,11 @@
         "Switch to Desktop 4" = "Meta + 4";
         "Switch to Desktop 5" = "Meta + 5";
 
-        "Window to Desktop 1" = "Meta + !";
-        "Window to Desktop 2" = "Meta + \"";
-        "Window to Desktop 3" = "Meta + £";
-        "Window to Desktop 4" = "Meta + $";
-        "Window to Desktop 5" = "Meta + %";
+        "Window to Desktop 1" = if (xkbLayout == "gb") then "Meta + !" else "Meta + !";
+        "Window to Desktop 2" = if (xkbLayout == "gb") then "Meta + \"" else "Meta + @";
+        "Window to Desktop 3" = if (xkbLayout == "gb") then "Meta + £" else "Meta + #";
+        "Window to Desktop 4" = if (xkbLayout == "gb") then "Meta + $" else "Meta + $";
+        "Window to Desktop 5" = if (xkbLayout == "gb") then "Meta + %" else "Meta + %";
       };
     };
   };
@@ -181,8 +186,8 @@
     ];
 
     settings = {
-      user.name = "marcg";
-      user.email = "marcgrec@tuta.com";
+      user.name = "${userConfig.name}";
+      user.email = "${userConfig.email}";
 
       alias = {
         co = "checkout";
@@ -244,21 +249,9 @@
 
   programs.lazygit = {
     enable = true;
-    enableBashIntegration = true;
   };
 
   programs.claude-code.enable = true;
 
-  # This value determines the Home Manager release that your
-  # configuration is compatible with. This helps avoid breakage
-  # when a new Home Manager release introduces backwards
-  # incompatible changes.
-  #
-  # You can update Home Manager without changing this value. See
-  # the Home Manager release notes for a list of state version
-  # changes in each release.
-  home.stateVersion = "25.11";
-
-  # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }

@@ -12,30 +12,60 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+    hardware.url = "github:nixos/nixos-hardware";
   };
 
   outputs =
     {
+      self,
       nixpkgs,
       home-manager,
       plasma-manager,
+      hardware,
       ...
-    }:
-    {
-      nixosConfigurations = {
-        "thinkpad-x230" = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
+    }@inputs:
+    let
+      inherit (self) outputs;
+
+      users = {
+        "marcg" = {
+          email = "marcgrec@tuta.com";
+          fullName = "Marc-Alexander Grec";
+          name = "marcg";
+        };
+      };
+
+      mkNixosConfiguration =
+        hostname: username:
+        nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs outputs hostname;
+            userConfig = users.${username};
+            nixosModules = "${self}/modules/nixos";
+          };
           modules = [
-            ./configuration.nix
+            ./hosts/${hostname}
             home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.sharedModules = [ plasma-manager.homeModules.plasma-manager ];
-              home-manager.users.marcg = ./home.nix;
-            }
+            (
+              { config, ... }:
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.sharedModules = [ plasma-manager.homeModules.plasma-manager ];
+                home-manager.extraSpecialArgs = {
+                  userConfig = users.${username};
+                  nhModules = "${self}/modules/home-manager";
+                  xkbLayout = config.services.xserver.xkb.layout;
+                };
+                home-manager.users.${users.${username}.name} = ./hosts/${hostname}/home/${username};
+              }
+            )
           ];
         };
+    in
+    {
+      nixosConfigurations = {
+        "thinkpad-x230" = mkNixosConfiguration "thinkpad-x230" "marcg";
       };
     };
 }
