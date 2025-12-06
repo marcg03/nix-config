@@ -2,10 +2,15 @@
   pkgs,
   userConfig,
   xkbLayout,
+  inputs,
   ...
 }:
 
 {
+  imports = [
+    inputs.direnv-instant.homeModules.direnv-instant
+  ];
+
   home.username = "${userConfig.name}";
   home.homeDirectory = "/home/${userConfig.name}";
 
@@ -23,6 +28,8 @@
   ];
 
   services.kdeconnect.enable = true;
+
+  programs.direnv-instant.enable = true;
 
   programs = {
     direnv = {

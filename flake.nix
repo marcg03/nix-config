@@ -13,6 +13,7 @@
       inputs.home-manager.follows = "home-manager";
     };
     hardware.url = "github:nixos/nixos-hardware";
+    direnv-instant.url = "github:Mic92/direnv-instant";
   };
 
   outputs =
@@ -22,6 +23,7 @@
       home-manager,
       plasma-manager,
       hardware,
+      direnv-instant,
       ...
     }@inputs:
     let
@@ -53,6 +55,7 @@
                 home-manager.useUserPackages = true;
                 home-manager.sharedModules = [ plasma-manager.homeModules.plasma-manager ];
                 home-manager.extraSpecialArgs = {
+                  inherit inputs;
                   userConfig = users.${username};
                   nhModules = "${self}/modules/home-manager";
                   xkbLayout = config.services.xserver.xkb.layout;
