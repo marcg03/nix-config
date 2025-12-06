@@ -24,6 +24,10 @@
 
   services.kdeconnect.enable = true;
 
+  programs.fzf.enable = true;
+
+  programs.ripgrep.enable = true;
+
   programs.btop = {
     enable = true;
     settings = {
