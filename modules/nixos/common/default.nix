@@ -25,6 +25,8 @@
     LC_TIME = "ro_RO.UTF-8";
   };
 
+  services.openssh.enable = true;
+
   services.avahi = {
     enable = true;
     nssmdns4 = true;
