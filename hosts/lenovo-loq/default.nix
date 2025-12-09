@@ -17,6 +17,7 @@
     "${nixosModules}/common"
   ];
 
+  hardware.bluetooth.enable = true;
   hardware.nvidia.open = true;
   hardware.nvidia.prime = {
     intelBusId = "PCI:0:2:0";
