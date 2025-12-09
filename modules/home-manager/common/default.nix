@@ -25,6 +25,7 @@
     muse-sounds-manager
     prismlauncher
     javaPackages.compiler.temurin-bin.jdk-21
+    ppsspp
   ];
 
   services.kdeconnect.enable = true;
