@@ -111,6 +111,7 @@
     zip
     unrar
     rar
+    qemu
   ];
 
   networking.firewall = rec {
