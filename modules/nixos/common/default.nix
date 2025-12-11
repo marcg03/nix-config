@@ -25,6 +25,8 @@
     LC_TIME = "ro_RO.UTF-8";
   };
 
+  virtualisation.podman.enable = true;
+
   services.openssh.enable = true;
 
   services.avahi = {
