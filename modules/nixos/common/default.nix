@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ userConfig, pkgs, ... }:
 
 {
   boot.loader.systemd-boot.enable = true;
@@ -29,6 +29,9 @@
     enable = true;
     extraPackages = with pkgs; [ podman-compose ];
   };
+  virtualisation.virtualbox.host.enable = true;
+  virtualisation.virtualbox.host.enableExtensionPack = true;
+  users.extraGroups.vboxusers.members = [ "${userConfig.name}" ];
 
   services.openssh.enable = true;
 
