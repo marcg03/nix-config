@@ -25,7 +25,10 @@
     LC_TIME = "ro_RO.UTF-8";
   };
 
-  virtualisation.podman.enable = true;
+  virtualisation.podman = {
+    enable = true;
+    extraPackages = with pkgs; [ podman-compose ];
+  };
 
   services.openssh.enable = true;
 
