@@ -26,6 +26,7 @@
     prismlauncher
     javaPackages.compiler.temurin-bin.jdk-21
     ppsspp
+    git-crypt
   ];
 
   services.kdeconnect.enable = true;
