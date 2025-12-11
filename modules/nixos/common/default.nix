@@ -25,9 +25,14 @@
     LC_TIME = "ro_RO.UTF-8";
   };
 
+  virtualisation.containers.enable = true;
+  virtualisation.containers.containersConf.settings = {
+    containers.log_driver = "k8s-file";
+  };
   virtualisation.podman = {
     enable = true;
     extraPackages = with pkgs; [ podman-compose ];
+    defaultNetwork.settings.dns_enabled = true;
   };
   virtualisation.virtualbox.host.enable = true;
   virtualisation.virtualbox.host.enableExtensionPack = true;
