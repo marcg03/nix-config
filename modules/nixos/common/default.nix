@@ -120,6 +120,7 @@
     unrar
     rar
     qemu
+    kdePackages.ktorrent
   ];
 
   networking.firewall = rec {
