@@ -23,6 +23,7 @@
     intelBusId = "PCI:0:2:0";
     nvidiaBusId = "PCI:1:0:0";
   };
+  hardware.nvidia-container-toolkit.enable = true;
 
   boot.initrd.luks.devices."system_crypt1" = {
     device = "/dev/disk/by-uuid/65723a12-b226-4145-b1fc-3697bf9ffadb";
