@@ -27,6 +27,7 @@
     javaPackages.compiler.temurin-bin.jdk-21
     ppsspp
     git-crypt
+    kdePackages.alligator
   ];
 
   services.kdeconnect.enable = true;
