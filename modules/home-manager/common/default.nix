@@ -135,6 +135,13 @@
             "ruff"
           ];
         }
+        {
+          name = "dockerfile";
+          formatter = {
+            command = "${pkgs.dockerfmt}/bin/dockerfmt";
+          };
+          auto-format = true;
+        }
       ];
     };
     extraPackages = with pkgs; [
@@ -149,7 +156,6 @@
       dockerfile-language-server
       yaml-language-server
       docker-compose-language-service
-      dockerfmt
     ];
   };
 
