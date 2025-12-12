@@ -146,6 +146,10 @@
       vscode-json-languageserver
       nil
       clang-tools
+      dockerfile-language-server
+      yaml-language-server
+      docker-compose-language-service
+      dockerfmt
     ];
   };
 
