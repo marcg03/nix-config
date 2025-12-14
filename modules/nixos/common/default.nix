@@ -126,6 +126,7 @@
     rar
     qemu
     kdePackages.ktorrent
+    man-pages
   ];
 
   networking.firewall = rec {
