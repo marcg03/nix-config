@@ -136,6 +136,10 @@
           ];
         }
         {
+          name = "c";
+          auto-format = true;
+        }
+        {
           name = "dockerfile";
           formatter = {
             command = "${pkgs.dockerfmt}/bin/dockerfmt";
