@@ -147,12 +147,10 @@
     extraPackages = with pkgs; [
       ty
       ruff
-      rust-analyzer
       marksman
       typescript-language-server
       vscode-json-languageserver
       nil
-      clang-tools
       dockerfile-language-server
       yaml-language-server
       docker-compose-language-service
