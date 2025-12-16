@@ -28,6 +28,7 @@
     ppsspp
     git-crypt
     kdePackages.alligator
+    pcsx2
   ];
 
   services.kdeconnect.enable = true;
