@@ -65,6 +65,8 @@
     jack.enable = true;
   };
 
+  programs.noisetorch.enable = true;
+
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;
