@@ -124,6 +124,7 @@
     zip
     unrar
     rar
+    pigz
     qemu
     kdePackages.ktorrent
     man-pages
