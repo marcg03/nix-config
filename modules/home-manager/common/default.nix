@@ -29,6 +29,7 @@
     git-crypt
     kdePackages.alligator
     pcsx2
+    gau
   ];
 
   services.kdeconnect.enable = true;
