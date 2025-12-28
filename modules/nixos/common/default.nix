@@ -1,5 +1,7 @@
-{ userConfig, pkgs, ... }:
-
+{
+  pkgs,
+  ...
+}:
 {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -25,30 +27,7 @@
     LC_TIME = "ro_RO.UTF-8";
   };
 
-  virtualisation.containers.enable = true;
-  virtualisation.containers.containersConf.settings = {
-    containers.log_driver = "k8s-file";
-  };
-  virtualisation.podman = {
-    enable = true;
-    extraPackages = with pkgs; [ podman-compose ];
-    defaultNetwork.settings.dns_enabled = true;
-  };
-  virtualisation.virtualbox.host.enable = true;
-  virtualisation.virtualbox.host.enableExtensionPack = true;
-  users.extraGroups.vboxusers.members = [ "${userConfig.name}" ];
-
   services.openssh.enable = true;
-
-  services.avahi = {
-    enable = true;
-    nssmdns4 = true;
-    publish = {
-      enable = true;
-      addresses = true;
-      domain = true;
-    };
-  };
 
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
@@ -65,45 +44,10 @@
     jack.enable = true;
   };
 
-  programs.noisetorch.enable = true;
-
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true;
-    localNetworkGameTransfers.openFirewall = true;
-  };
-
   programs.zsh.enable = true;
-
-  programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [
-      glibc
-      stdenv.cc.cc.lib
-
-      xorg.libXtst
-      xorg.libX11
-      xorg.libXext
-      xorg.libXi
-      xorg.libXrandr
-      xorg.libXxf86vm
-      xorg.libXcursor
-      xorg.libXfixes
-      xorg.libXrender
-
-      libGL
-      mesa
-      alsa-lib
-      pulseaudio
-      fontconfig
-      freetype
-    ];
-  };
-
+  programs.noisetorch.enable = true;
   programs.localsend.enable = true;
-
   programs.gnupg.agent.enable = true;
-
   programs.firefox.enable = true;
 
   nixpkgs.config.allowUnfree = true;
@@ -128,7 +72,6 @@
     rar
     pigz
     qemu
-    kdePackages.ktorrent
     man-pages
   ];
 

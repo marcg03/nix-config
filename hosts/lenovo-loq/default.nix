@@ -15,6 +15,11 @@
 
     ./hardware-configuration.nix
     "${nixosModules}/common"
+
+    "${nixosModules}/avahi.nix"
+    "${nixosModules}/gaming.nix"
+    "${nixosModules}/podman.nix"
+    "${nixosModules}/virtualbox.nix"
   ];
 
   hardware.bluetooth.enable = true;

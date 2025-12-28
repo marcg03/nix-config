@@ -14,6 +14,10 @@
 
     ./hardware-configuration.nix
     "${nixosModules}/common"
+
+    "${nixosModules}/avahi.nix"
+    "${nixosModules}/gaming.nix"
+    "${nixosModules}/podman.nix"
   ];
 
   boot.initrd.luks.devices."luks-56def38e-cada-478c-b096-b9f5b7a4f470" = {
