@@ -22,6 +22,16 @@
     "${nixosModules}/virtualbox.nix"
   ];
 
+  # Wireless Network Card Fix
+  boot.kernelParams = [ "pcie_aspm=off" ];
+
+  boot.extraModprobeConfig = ''
+    options rtw89_pci disable_aspm_l1=1 disable_aspm_l1ss=1
+  '';
+
+  networking.networkmanager.wifi.powersave = false;
+  # ~Wireless Network Card Fix
+
   hardware.bluetooth.enable = true;
   hardware.nvidia.open = true;
   hardware.nvidia.prime = {
