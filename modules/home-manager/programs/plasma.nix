@@ -1,4 +1,5 @@
 {
+  pkgs,
   xkbLayout,
   ...
 }:
@@ -30,4 +31,8 @@
       };
     };
   };
+
+  home.packages = with pkgs; [
+    kdePackages.filelight
+  ];
 }
