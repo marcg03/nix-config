@@ -20,6 +20,7 @@
     "${nixosModules}/gaming.nix"
     "${nixosModules}/podman.nix"
     "${nixosModules}/virtualbox.nix"
+    "${nixosModules}/monero.nix"
   ];
 
   # Wireless Network Card Fix
