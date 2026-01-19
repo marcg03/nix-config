@@ -68,11 +68,14 @@
     isNormalUser = true;
     description = "${userConfig.fullName}";
     extraGroups = [
+      "adbusers"
       "networkmanager"
       "wheel"
     ];
     shell = pkgs.zsh;
   };
+
+  programs.adb.enable = true;
 
   system.stateVersion = "25.11";
 }
