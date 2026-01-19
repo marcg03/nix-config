@@ -29,6 +29,7 @@
     "${nhModules}/programs/top.nix"
     "${nhModules}/programs/uv.nix"
     "${nhModules}/programs/zsh.nix"
+    "${nhModules}/services/ollama-cuda.nix"
   ];
 
   home.packages = with pkgs; [
