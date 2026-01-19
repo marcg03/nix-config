@@ -75,7 +75,9 @@
     shell = pkgs.zsh;
   };
 
-  programs.adb.enable = true;
+  environment.systemPackages = with pkgs; [
+    android-tools
+  ];
 
   system.stateVersion = "25.11";
 }
