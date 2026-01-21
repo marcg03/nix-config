@@ -21,6 +21,7 @@
     "${nixosModules}/podman.nix"
     "${nixosModules}/virtualbox.nix"
     "${nixosModules}/monero.nix"
+    "${nixosModules}/appimage.nix"
   ];
 
   # Wireless Network Card Fix
