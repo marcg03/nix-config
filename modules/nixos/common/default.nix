@@ -1,5 +1,6 @@
 {
   pkgs,
+  userConfig,
   ...
 }:
 {
@@ -36,6 +37,13 @@
     enable = true;
     drivers = [ pkgs.gutenprint ];
   };
+
+  hardware.sane.enable = true;
+
+  users.users.${userConfig.name}.extraGroups = [
+    "scanner"
+    "lp"
+  ];
 
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
