@@ -14,15 +14,15 @@
       glibc
       stdenv.cc.cc.lib
 
-      xorg.libXtst
-      xorg.libX11
-      xorg.libXext
-      xorg.libXi
-      xorg.libXrandr
-      xorg.libXxf86vm
-      xorg.libXcursor
-      xorg.libXfixes
-      xorg.libXrender
+      libxtst
+      libx11
+      libxext
+      libxi
+      libxrandr
+      libxxf86vm
+      libxcursor
+      libxfixes
+      libxrender
 
       libGL
       mesa
