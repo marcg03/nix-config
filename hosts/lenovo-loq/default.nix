@@ -19,7 +19,7 @@
     "${nixosModules}/avahi.nix"
     "${nixosModules}/gaming.nix"
     "${nixosModules}/podman.nix"
-    "${nixosModules}/virtualbox.nix"
+    # "${nixosModules}/virtualbox.nix"
     "${nixosModules}/monero.nix"
     "${nixosModules}/appimage.nix"
   ];
