@@ -84,6 +84,7 @@
     pigz
     qemu
     man-pages
+    openscad
   ];
 
   networking.firewall = rec {
