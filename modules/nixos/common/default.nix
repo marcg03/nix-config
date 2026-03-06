@@ -84,8 +84,6 @@
     pigz
     qemu
     man-pages
-    openscad
-    python312
   ];
 
   networking.firewall = rec {
