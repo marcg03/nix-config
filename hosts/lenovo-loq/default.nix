@@ -25,10 +25,9 @@
   ];
 
   # Wireless Network Card Fix
-  boot.kernelParams = [ "pcie_aspm=off" ];
-
   boot.extraModprobeConfig = ''
-    options rtw89_pci disable_aspm_l1=1 disable_aspm_l1ss=1
+    options rtw89_pci disable_aspm_l1=1 disable_aspm_l1ss=1 disable_clkreq=1
+    options rtw89_core disable_ps_mode=1
   '';
 
   networking.networkmanager.wifi.powersave = false;
