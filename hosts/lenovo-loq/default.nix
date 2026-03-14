@@ -77,6 +77,7 @@
 
   environment.systemPackages = with pkgs; [
     android-tools
+    beyond-all-reason
   ];
 
   system.stateVersion = "25.11";
