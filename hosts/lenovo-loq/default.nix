@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   inputs,
   hostname,
@@ -35,6 +36,11 @@
 
   hardware.bluetooth.enable = true;
   hardware.nvidia.open = true;
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
+  hardware.nvidia.powerManagement = {
+    enable = true;
+    finegrained = true;
+  };
   hardware.nvidia.prime = {
     intelBusId = "PCI:0:2:0";
     nvidiaBusId = "PCI:1:0:0";
