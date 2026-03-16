@@ -80,6 +80,7 @@
       checks = forEachSystem (system: {
         pre-commit-check = inputs.git-hooks.lib.${system}.run {
           src = ./.;
+          excludes = [ "hardware-configuration\\.nix" ];
           hooks = {
             nixfmt.enable = true;
             deadnix.enable = true;
