@@ -14,6 +14,8 @@
     };
     hardware.url = "github:nixos/nixos-hardware";
     direnv-instant.url = "github:Mic92/direnv-instant";
+    systems.url = "github:nix-systems/default";
+    git-hooks.url = "github:cachix/git-hooks.nix";
   };
 
   outputs =
@@ -24,9 +26,12 @@
       plasma-manager,
       hardware,
       direnv-instant,
+      systems,
       ...
     }@inputs:
     let
+      forEachSystem = nixpkgs.lib.genAttrs (import systems);
+
       inherit (self) outputs;
 
       users = {
@@ -71,5 +76,26 @@
         "thinkpad-x230" = mkNixosConfiguration "thinkpad-x230" "marcg";
         "lenovo-loq" = mkNixosConfiguration "lenovo-loq" "marcg";
       };
+
+      checks = forEachSystem (system: {
+        pre-commit-check = inputs.git-hooks.lib.${system}.run {
+          src = ./.;
+          hooks = {
+            nixfmt.enable = true;
+          };
+        };
+      });
+
+      devShells = forEachSystem (system: {
+        default =
+          let
+            pkgs = nixpkgs.legacyPackages.${system};
+            inherit (self.checks.${system}.pre-commit-check) shellHook enabledPackages;
+          in
+          pkgs.mkShell {
+            inherit shellHook;
+            buildInputs = enabledPackages;
+          };
+      });
     };
 }
