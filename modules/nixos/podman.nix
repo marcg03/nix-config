@@ -3,10 +3,12 @@
   ...
 }:
 {
-  virtualisation.containers = {
-    enable = true;
-    containersConf.settings = {
-      containers.log_driver = "k8s-file";
+  virtualisation = {
+    containers = {
+      enable = true;
+      containersConf.settings = {
+        containers.log_driver = "k8s-file";
+      };
     };
     podman = {
       enable = true;
