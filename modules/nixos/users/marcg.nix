@@ -6,7 +6,7 @@
 {
   users.users.${userConfigs.marcg.name} = {
     isNormalUser = true;
-    description = "${userConfigs.marcg.fullName}";
+    description = "${userConfigs.marcg.name}";
     extraGroups = [
       "networkmanager"
       "wheel"
