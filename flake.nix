@@ -24,8 +24,6 @@
       nixpkgs,
       home-manager,
       plasma-manager,
-      hardware,
-      direnv-instant,
       systems,
       ...
     }@inputs:
@@ -40,14 +38,24 @@
           fullName = "Marc-Alexander Grec";
           name = "marcg";
         };
+        "primatronic" = {
+          email = "marcgrec@tuta.com";
+          fullName = "Marc-Alexander Grec";
+          name = "primatronic";
+        };
       };
 
       mkNixosConfiguration =
-        hostname: username:
+        hostname: usernames:
         nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit inputs outputs hostname;
-            userConfig = users.${username};
+            inherit
+              inputs
+              outputs
+              hostname
+              usernames
+              ;
+            userConfigs = users;
             nixosModules = "${self}/modules/nixos";
           };
           modules = [
@@ -56,16 +64,25 @@
             (
               { config, ... }:
               {
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-                home-manager.sharedModules = [ plasma-manager.homeModules.plasma-manager ];
-                home-manager.extraSpecialArgs = {
-                  inherit inputs;
-                  userConfig = users.${username};
-                  nhModules = "${self}/modules/home-manager";
-                  xkbLayout = config.services.xserver.xkb.layout;
+                home-manager = {
+                  useGlobalPkgs = true;
+                  useUserPackages = true;
+                  sharedModules = [ plasma-manager.homeModules.plasma-manager ];
+                  extraSpecialArgs = {
+                    inherit inputs;
+                    nhModules = "${self}/modules/home-manager";
+                    xkbLayout = config.services.xserver.xkb.layout;
+                  };
+                  users = builtins.listToAttrs (
+                    map (username: {
+                      inherit (users.${username}) name;
+                      value = {
+                        imports = [ ./hosts/${hostname}/home/${username} ];
+                        _module.args.userConfig = users.${username};
+                      };
+                    }) usernames
+                  );
                 };
-                home-manager.users.${users.${username}.name} = ./hosts/${hostname}/home/${username};
               }
             )
           ];
@@ -73,8 +90,13 @@
     in
     {
       nixosConfigurations = {
-        "thinkpad-x230" = mkNixosConfiguration "thinkpad-x230" "marcg";
-        "lenovo-loq" = mkNixosConfiguration "lenovo-loq" "marcg";
+        "thinkpad-x230" = mkNixosConfiguration "thinkpad-x230" [
+          "marcg"
+        ];
+        "lenovo-loq" = mkNixosConfiguration "lenovo-loq" [
+          "marcg"
+          "primatronic"
+        ];
       };
 
       checks = forEachSystem (system: {

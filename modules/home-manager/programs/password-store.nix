@@ -5,6 +5,6 @@
 {
   programs.password-store = {
     enable = true;
-    package = (pkgs.pass-wayland.withExtensions (exts: [ exts.pass-otp ]));
+    package = pkgs.pass-wayland.withExtensions (exts: [ exts.pass-otp ]);
   };
 }

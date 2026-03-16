@@ -1,6 +1,6 @@
 {
   pkgs,
-  userConfig,
+  usernames,
   ...
 }:
 {
@@ -28,38 +28,45 @@
     LC_TIME = "ro_RO.UTF-8";
   };
 
-  services.openssh.enable = true;
-
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
-
-  services.printing = {
-    enable = true;
-    drivers = [ pkgs.gutenprint ];
+  services = {
+    openssh.enable = true;
+    displayManager.sddm.enable = true;
+    desktopManager.plasma6.enable = true;
+    printing = {
+      enable = true;
+      drivers = [ pkgs.gutenprint ];
+    };
+    pulseaudio.enable = false;
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      jack.enable = true;
+    };
   };
 
   hardware.sane.enable = true;
 
-  users.users.${userConfig.name}.extraGroups = [
-    "scanner"
-    "lp"
-  ];
+  users.users = builtins.listToAttrs (
+    map (u: {
+      name = u;
+      value.extraGroups = [
+        "scanner"
+        "lp"
+      ];
+    }) usernames
+  );
 
-  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    jack.enable = true;
-  };
 
-  programs.zsh.enable = true;
-  programs.noisetorch.enable = true;
-  programs.localsend.enable = true;
-  programs.gnupg.agent.enable = true;
-  programs.firefox.enable = true;
+  programs = {
+    zsh.enable = true;
+    noisetorch.enable = true;
+    localsend.enable = true;
+    gnupg.agent.enable = true;
+    firefox.enable = true;
+  };
 
   nixpkgs.config.allowUnfree = true;
 

@@ -1,9 +1,8 @@
 {
-  pkgs,
   inputs,
   hostname,
+  usernames,
   nixosModules,
-  userConfig,
   ...
 }:
 
@@ -18,7 +17,8 @@
     "${nixosModules}/avahi.nix"
     "${nixosModules}/gaming.nix"
     "${nixosModules}/podman.nix"
-  ];
+  ]
+  ++ (map (u: "${nixosModules}/users/${u}.nix") usernames);
 
   boot.initrd.luks.devices."luks-56def38e-cada-478c-b096-b9f5b7a4f470" = {
     device = "/dev/disk/by-uuid/56def38e-cada-478c-b096-b9f5b7a4f470";
@@ -34,30 +34,22 @@
 
   console.keyMap = "uk";
 
-  services.xserver.xkb = {
-    layout = "gb";
-    variant = "";
-  };
-
-  services.power-profiles-daemon.enable = false;
-  services.tlp = {
-    enable = true;
-    settings = {
-      CPU_SCALING_GOVERNOR_ON_AC = "performance";
-      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
-      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+  services = {
+    xserver.xkb = {
+      layout = "gb";
+      variant = "";
     };
-  };
 
-  users.users.${userConfig.name} = {
-    isNormalUser = true;
-    description = "${userConfig.fullName}";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-    ];
-    shell = pkgs.zsh;
+    power-profiles-daemon.enable = false;
+    tlp = {
+      enable = true;
+      settings = {
+        CPU_SCALING_GOVERNOR_ON_AC = "performance";
+        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+        CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+        CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+      };
+    };
   };
 
   system.stateVersion = "25.11";

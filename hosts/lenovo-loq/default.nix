@@ -3,8 +3,8 @@
   pkgs,
   inputs,
   hostname,
+  usernames,
   nixosModules,
-  userConfig,
   ...
 }:
 
@@ -23,7 +23,8 @@
     # "${nixosModules}/virtualbox.nix"
     "${nixosModules}/monero.nix"
     "${nixosModules}/appimage.nix"
-  ];
+  ]
+  ++ (map (u: "${nixosModules}/users/${u}.nix") usernames);
 
   # Wireless Network Card Fix
   boot.extraModprobeConfig = ''
@@ -34,32 +35,38 @@
   networking.networkmanager.wifi.powersave = false;
   # ~Wireless Network Card Fix
 
-  hardware.bluetooth.enable = true;
-  hardware.nvidia.open = true;
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
-  hardware.nvidia.powerManagement = {
-    enable = true;
-    finegrained = true;
-  };
-  hardware.nvidia.prime = {
-    intelBusId = "PCI:0:2:0";
-    nvidiaBusId = "PCI:1:0:0";
-  };
-  hardware.nvidia-container-toolkit.enable = true;
-
-  boot.initrd.luks.devices."system_crypt1" = {
-    device = "/dev/disk/by-uuid/65723a12-b226-4145-b1fc-3697bf9ffadb";
-    allowDiscards = true;
-    preLVM = true;
+  hardware = {
+    bluetooth.enable = true;
+    nvidia = {
+      open = true;
+      package = config.boot.kernelPackages.nvidiaPackages.beta;
+      powerManagement = {
+        enable = true;
+        finegrained = true;
+      };
+      prime = {
+        intelBusId = "PCI:0:2:0";
+        nvidiaBusId = "PCI:1:0:0";
+      };
+    };
+    nvidia-container-toolkit.enable = true;
   };
 
-  boot.initrd.luks.devices."system_crypt0" = {
-    device = "/dev/disk/by-uuid/05fc8c31-efe1-43f9-bb43-7ded3e39dc6b";
-    allowDiscards = true;
-    preLVM = true;
-  };
+  boot.initrd = {
+    luks.devices."system_crypt1" = {
+      device = "/dev/disk/by-uuid/65723a12-b226-4145-b1fc-3697bf9ffadb";
+      allowDiscards = true;
+      preLVM = true;
+    };
 
-  boot.initrd.services.lvm.enable = true;
+    luks.devices."system_crypt0" = {
+      device = "/dev/disk/by-uuid/05fc8c31-efe1-43f9-bb43-7ded3e39dc6b";
+      allowDiscards = true;
+      preLVM = true;
+    };
+
+    services.lvm.enable = true;
+  };
 
   networking.hostName = "${hostname}";
 
@@ -70,16 +77,12 @@
     variant = "";
   };
 
-  users.users.${userConfig.name} = {
-    isNormalUser = true;
-    description = "${userConfig.fullName}";
-    extraGroups = [
-      "adbusers"
-      "networkmanager"
-      "wheel"
-    ];
-    shell = pkgs.zsh;
-  };
+  users.users = builtins.listToAttrs (
+    map (u: {
+      name = u;
+      value.extraGroups = [ "adbusers" ];
+    }) usernames
+  );
 
   environment.systemPackages = with pkgs; [
     android-tools

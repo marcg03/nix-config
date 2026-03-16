@@ -3,13 +3,15 @@
   ...
 }:
 {
-  virtualisation.containers.enable = true;
-  virtualisation.containers.containersConf.settings = {
-    containers.log_driver = "k8s-file";
-  };
-  virtualisation.podman = {
+  virtualisation.containers = {
     enable = true;
-    extraPackages = with pkgs; [ podman-compose ];
-    defaultNetwork.settings.dns_enabled = true;
+    containersConf.settings = {
+      containers.log_driver = "k8s-file";
+    };
+    podman = {
+      enable = true;
+      extraPackages = with pkgs; [ podman-compose ];
+      defaultNetwork.settings.dns_enabled = true;
+    };
   };
 }
