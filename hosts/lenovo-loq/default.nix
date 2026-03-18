@@ -23,6 +23,7 @@
     # "${nixosModules}/virtualbox.nix"
     "${nixosModules}/monero.nix"
     "${nixosModules}/appimage.nix"
+    "${nixosModules}/wireguard.nix"
   ]
   ++ (map (u: "${nixosModules}/users/${u}.nix") usernames);
 
