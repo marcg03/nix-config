@@ -10,6 +10,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "gamemode" # FIX: this should be just for lenovo-loq
     ];
     shell = pkgs.zsh;
   };
