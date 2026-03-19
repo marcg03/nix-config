@@ -5,7 +5,9 @@
   nixosModules,
   ...
 }:
-
+let
+  existingPaths = paths: builtins.filter builtins.pathExists paths;
+in
 {
   imports = [
     inputs.hardware.nixosModules.lenovo-thinkpad-x230
@@ -18,7 +20,7 @@
     "${nixosModules}/gaming.nix"
     "${nixosModules}/podman.nix"
   ]
-  ++ (map (u: "${nixosModules}/users/${u}.nix") usernames);
+  ++ existingPaths (map (u: "${nixosModules}/users/${u}.nix") usernames);
 
   boot.initrd.luks.devices."luks-56def38e-cada-478c-b096-b9f5b7a4f470" = {
     device = "/dev/disk/by-uuid/56def38e-cada-478c-b096-b9f5b7a4f470";

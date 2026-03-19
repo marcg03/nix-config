@@ -7,7 +7,9 @@
   nixosModules,
   ...
 }:
-
+let
+  existingPaths = paths: builtins.filter builtins.pathExists paths;
+in
 {
   imports = [
     inputs.hardware.nixosModules.common-cpu-intel
@@ -26,8 +28,8 @@
     "${nixosModules}/appimage.nix"
     "${nixosModules}/${hostname}/wireguard.nix"
   ]
-  ++ (map (u: "${nixosModules}/users/${u}.nix") usernames)
-  ++ (map (u: "${nixosModules}/${hostname}/users/${u}.nix") usernames);
+  ++ existingPaths (map (u: "${nixosModules}/users/${u}.nix") usernames)
+  ++ existingPaths (map (u: "${nixosModules}/${hostname}/users/${u}.nix") usernames);
 
   # Wireless Network Card Fix
   boot.extraModprobeConfig = ''
