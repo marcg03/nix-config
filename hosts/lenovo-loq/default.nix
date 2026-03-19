@@ -19,13 +19,15 @@
 
     "${nixosModules}/avahi.nix"
     "${nixosModules}/gaming.nix"
+    "${nixosModules}/${hostname}/gaming.nix"
     "${nixosModules}/podman.nix"
     # "${nixosModules}/virtualbox.nix"
     "${nixosModules}/monero.nix"
     "${nixosModules}/appimage.nix"
-    "${nixosModules}/wireguard.nix"
+    "${nixosModules}/${hostname}/wireguard.nix"
   ]
-  ++ (map (u: "${nixosModules}/users/${u}.nix") usernames);
+  ++ (map (u: "${nixosModules}/users/${u}.nix") usernames)
+  ++ (map (u: "${nixosModules}/${hostname}/users/${u}.nix") usernames);
 
   # Wireless Network Card Fix
   boot.extraModprobeConfig = ''
