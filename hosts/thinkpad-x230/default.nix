@@ -19,6 +19,7 @@ in
     "${nixosModules}/avahi.nix"
     "${nixosModules}/gaming.nix"
     "${nixosModules}/podman.nix"
+    "${nixosModules}/${hostname}/wireguard.nix"
   ]
   ++ existingPaths (map (u: "${nixosModules}/users/${u}.nix") usernames);
 
