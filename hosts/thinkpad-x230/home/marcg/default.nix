@@ -1,4 +1,5 @@
 {
+  pkgs,
   nhModules,
   ...
 }:
@@ -28,6 +29,10 @@
     "${nhModules}/programs/top.nix"
     "${nhModules}/programs/uv.nix"
     "${nhModules}/programs/zsh.nix"
+  ];
+
+  home.packages = with pkgs; [
+    rustdesk
   ];
 
   programs.home-manager.enable = true;
