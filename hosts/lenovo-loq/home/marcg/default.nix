@@ -38,6 +38,7 @@
     monero-gui
     beyond-all-reason
     rustdesk
+    libreoffice
   ];
 
   programs.home-manager.enable = true;
