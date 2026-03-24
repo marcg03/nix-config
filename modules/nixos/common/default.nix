@@ -92,6 +92,7 @@
     qemu
     man-pages
     vlc
+    ffmpeg-full
   ];
 
   networking.firewall = rec {
