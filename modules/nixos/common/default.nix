@@ -91,6 +91,7 @@
     pigz
     qemu
     man-pages
+    vlc
   ];
 
   networking.firewall = rec {
