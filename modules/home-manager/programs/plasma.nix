@@ -32,9 +32,10 @@
     };
   };
 
-  home.packages = with pkgs; [
-    kdePackages.filelight
-    kdePackages.skanlite
-    kdePackages.skanpage
+  home.packages = with pkgs.kdePackages; [
+    filelight
+    skanlite
+    skanpage
+    kamoso
   ];
 }
