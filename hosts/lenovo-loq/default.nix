@@ -86,6 +86,11 @@ in
     variant = "";
   };
 
+  services.umurmur = {
+    enable = true;
+    openFirewall = true;
+  };
+
   users.users = builtins.listToAttrs (
     map (u: {
       name = u;
