@@ -39,6 +39,7 @@
     beyond-all-reason
     rustdesk
     libreoffice
+    mumble
   ];
 
   programs.home-manager.enable = true;
