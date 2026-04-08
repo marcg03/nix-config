@@ -3,6 +3,29 @@
   usernames,
   ...
 }:
+let
+  uuid = "4b97ee65-a126-41ed-9480-0156b59be1f9";
+  do-backup = pkgs.writeShellScriptBin "do-backup" ''
+    set -euo pipefail
+
+    USB_MOUNT=/mnt/usb-backup
+    RESTIC_REPO="$USB_MOUNT/restic-backup"
+    BACKUP_DIRS=(~/Documents ~/src)
+
+    cleanup() {
+      sudo ${pkgs.coreutils}/bin/sync "$USB_MOUNT" || true
+      sudo ${pkgs.umount}/bin/umount "$USB_MOUNT" || true
+    }
+
+    trap cleanup EXIT
+
+    if ! mountpoint -q "$USB_MOUNT"; then
+      sudo ${pkgs.mount}/bin/mount /dev/disk/by-uuid/${uuid} "$USB_MOUNT"
+    fi
+
+    ${pkgs.restic}/bin/restic -r "$RESTIC_REPO" backup "''${BACKUP_DIRS[@]}" --tag "host=$HOSTNAME" --tag "user=$USER"
+  '';
+in
 {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -93,6 +116,8 @@
     man-pages
     vlc
     ffmpeg-full
+    restic
+    do-backup
   ];
 
   networking.firewall = rec {
