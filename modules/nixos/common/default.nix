@@ -10,20 +10,28 @@ let
 
     USB_MOUNT=/mnt/usb-backup
     RESTIC_REPO="$USB_MOUNT/restic-backup"
-    BACKUP_DIRS=(~/Documents ~/src)
+
+    if [ "$EUID" -ne 0 ]; then
+      exec sudo INITIAL_HOME="$HOME" INITIAL_USER="$USER" "$0" "$@"
+    else
+      INITIAL_HOME="''${INITIAL_HOME:-$HOME}"
+      INITIAL_USER="''${INITIAL_USER:-$USER}"
+    fi
+
+    BACKUP_DIRS=($INITIAL_HOME/Documents $INITIAL_HOME/src)
 
     cleanup() {
-      sudo ${pkgs.coreutils}/bin/sync "$USB_MOUNT" || true
-      sudo ${pkgs.umount}/bin/umount "$USB_MOUNT" || true
+      ${pkgs.coreutils}/bin/sync "$USB_MOUNT" || true
+      ${pkgs.umount}/bin/umount "$USB_MOUNT" || true
     }
 
     trap cleanup EXIT
 
     if ! mountpoint -q "$USB_MOUNT"; then
-      sudo ${pkgs.mount}/bin/mount /dev/disk/by-uuid/${uuid} "$USB_MOUNT"
+      ${pkgs.mount}/bin/mount /dev/disk/by-uuid/${uuid} "$USB_MOUNT"
     fi
 
-    ${pkgs.restic}/bin/restic -r "$RESTIC_REPO" backup "''${BACKUP_DIRS[@]}" --tag "host=$HOSTNAME" --tag "user=$USER"
+    sudo -u $INITIAL_USER ${pkgs.restic}/bin/restic -r "$RESTIC_REPO" backup "''${BACKUP_DIRS[@]}" --tag "host=$HOSTNAME" --tag "user=$INITIAL_USER"
   '';
 in
 {
