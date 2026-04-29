@@ -31,9 +31,9 @@
     "${nhModules}/programs/zsh.nix"
   ];
 
-  home.packages = with pkgs; [
-    rustdesk
-  ];
+  # home.packages = with pkgs; [
+  #   rustdesk
+  # ];
 
   programs.home-manager.enable = true;
 
