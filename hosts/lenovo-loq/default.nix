@@ -91,6 +91,12 @@ in
     openFirewall = true;
   };
 
+  services.openvpn.servers = {
+    matlab2026a-6VPN = {
+      config = " config /root/nixos/openvpn/matlab2026a-6.ovpn ";
+    };
+  };
+
   users.users = builtins.listToAttrs (
     map (u: {
       name = u;
