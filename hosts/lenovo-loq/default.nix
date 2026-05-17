@@ -31,6 +31,8 @@ in
   ++ existingPaths (map (u: "${nixosModules}/users/${u}.nix") usernames)
   ++ existingPaths (map (u: "${nixosModules}/${hostname}/users/${u}.nix") usernames);
 
+  programs.nix-index.enable = true;
+
   # Wireless Network Card Fix
   boot.extraModprobeConfig = ''
     options rtw89_pci disable_aspm_l1=1 disable_aspm_l1ss=1 disable_clkreq=1
