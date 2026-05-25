@@ -33,15 +33,6 @@ in
 
   programs.nix-index.enable = true;
 
-  # Wireless Network Card Fix
-  boot.extraModprobeConfig = ''
-    options rtw89_pci disable_aspm_l1=1 disable_aspm_l1ss=1 disable_clkreq=1
-    options rtw89_core disable_ps_mode=1
-  '';
-
-  networking.networkmanager.wifi.powersave = false;
-  # ~Wireless Network Card Fix
-
   hardware = {
     bluetooth.enable = true;
     nvidia = {
