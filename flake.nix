@@ -38,11 +38,6 @@
           fullName = "Marc-Alexander Grec";
           name = "marcg";
         };
-        "primatronic" = {
-          email = "marcgrec@tuta.com";
-          fullName = "Marc-Alexander Grec";
-          name = "primatronic";
-        };
       };
 
       mkNixosConfiguration =
@@ -95,7 +90,6 @@
         ];
         "lenovo-loq" = mkNixosConfiguration "lenovo-loq" [
           "marcg"
-          "primatronic"
         ];
       };
 
