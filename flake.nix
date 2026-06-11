@@ -16,6 +16,7 @@
     direnv-instant.url = "github:Mic92/direnv-instant";
     systems.url = "github:nix-systems/default";
     git-hooks.url = "github:cachix/git-hooks.nix";
+    helix.url = "github:marcg03/helix/patch/goto-words";
   };
 
   outputs =
@@ -55,6 +56,7 @@
           };
           modules = [
             ./hosts/${hostname}
+            { nixpkgs.overlays = [ inputs.helix.overlays.default ]; }
             home-manager.nixosModules.home-manager
             (
               { config, ... }:
