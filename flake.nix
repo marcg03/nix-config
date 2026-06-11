@@ -115,7 +115,7 @@
           in
           pkgs.mkShell {
             inherit shellHook;
-            buildInputs = enabledPackages;
+            packages = with pkgs; [ nixfmt ] ++ enabledPackages;
           };
       });
     };
