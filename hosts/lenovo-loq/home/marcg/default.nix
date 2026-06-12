@@ -37,7 +37,6 @@
     monero-cli
     monero-gui
     beyond-all-reason
-    rustdesk
     libreoffice
     mumble
   ];
