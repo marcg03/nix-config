@@ -13,4 +13,7 @@
     ];
     shell = pkgs.zsh;
   };
+  nix.settings.trusted-users = [
+    "${userConfigs.marcg.name}"
+  ];
 }
