@@ -56,7 +56,9 @@
           };
           modules = [
             ./hosts/${hostname}
-            { nixpkgs.overlays = [ inputs.helix.overlays.default ]; }
+            {
+              nixpkgs.overlays = [ inputs.helix.overlays.default ];
+            }
             home-manager.nixosModules.home-manager
             (
               { config, ... }:
