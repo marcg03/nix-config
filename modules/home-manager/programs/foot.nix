@@ -9,6 +9,9 @@
         font-italic = "SauceCodePro Nerd Font:size=10";
         font-bold-italic = "SauceCodePro Nerd Font:size=10";
       };
+      mouse = {
+        hide-when-typing = "yes";
+      };
     };
   };
 }
