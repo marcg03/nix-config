@@ -11,6 +11,7 @@
       xclip
       git
       fzf
+      nixfmt
     ];
     settings = {
       theme = "jetbrains_dark";
