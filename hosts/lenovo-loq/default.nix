@@ -111,6 +111,8 @@ in
 
       RUNTIME_PM_ON_AC = "on";
       RUNTIME_PM_ON_BAT = "auto";
+
+      RUNTIME_PM_DISABLE = "00:14.0";
     };
   };
 
