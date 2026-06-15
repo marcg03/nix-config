@@ -10,7 +10,13 @@
     extraCompatPackages = with pkgs; [
       proton-ge-bin
     ];
+    gamescopeSession.enable = true;
   };
+  programs.gamescope = {
+    enable = true;
+    capSysNice = true;
+  };
+
   programs.nix-ld = {
     enable = true;
     libraries = with pkgs; [
