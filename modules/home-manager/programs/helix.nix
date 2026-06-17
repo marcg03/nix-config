@@ -19,5 +19,17 @@
         clipboard-provider = "wayland";
       };
     };
+    languages = {
+      language = [
+        {
+          name = "nix";
+          formatter = {
+            command = "nixfmt";
+            args = [ "-" ];
+          };
+          auto-format = true;
+        }
+      ];
+    };
   };
 }
