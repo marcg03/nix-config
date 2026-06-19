@@ -6,6 +6,7 @@
   users.users.${userConfigs.marcg.name} = {
     extraGroups = [
       "gamemode"
+      "input"
     ];
   };
 }
