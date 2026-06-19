@@ -22,6 +22,7 @@
     "${nhModules}/programs/jq.nix"
     "${nhModules}/programs/lazygit.nix"
     "${nhModules}/programs/misc.nix"
+    "${nhModules}/programs/obs-studio.nix"
     "${nhModules}/programs/password-store.nix"
     "${nhModules}/programs/plasma.nix"
     "${nhModules}/programs/ripgrep.nix"
