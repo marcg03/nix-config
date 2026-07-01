@@ -57,7 +57,12 @@
           modules = [
             ./hosts/${hostname}
             {
-              nixpkgs.overlays = [ inputs.helix.overlays.default ];
+              nixpkgs.overlays = [
+                inputs.helix.overlays.default
+                (final: _prev: {
+                  pnpm_10_29_2 = final.pnpm_10;
+                })
+              ];
             }
             home-manager.nixosModules.home-manager
             (
