@@ -59,6 +59,17 @@
             {
               nixpkgs.overlays = [
                 inputs.helix.overlays.default
+                (final: prev: {
+                  beyond-all-reason = final.symlinkJoin {
+                    name = "beyond-all-reason-wrapped";
+                    paths = [ prev.beyond-all-reason ];
+                    nativeBuildInputs = [ final.makeWrapper ];
+                    postBuild = ''
+                      wrapProgram $out/bin/beyond-all-reason \
+                        --set SDL_VIDEODRIVER x11
+                    '';
+                  };
+                })
                 (final: _prev: {
                   pnpm_10_29_2 = final.pnpm_10;
                 })
