@@ -30,6 +30,7 @@
     "${nhModules}/programs/tmux.nix"
     "${nhModules}/programs/top.nix"
     "${nhModules}/programs/uv.nix"
+    "${nhModules}/programs/yazi.nix"
     "${nhModules}/programs/zsh.nix"
     # "${nhModules}/services/ollama-cuda.nix"
   ];

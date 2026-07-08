@@ -115,7 +115,6 @@ in
     wl-clipboard
     brave
     lazygit
-    yazi
     unzip
     zip
     unrar
