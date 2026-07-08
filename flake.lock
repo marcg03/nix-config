@@ -134,6 +134,26 @@
         "type": "github"
       }
     },
+    "nix-index-database": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1783414108,
+        "narHash": "sha256-RY8e+gR2/DhXsYDxGDL6Hhe9+POD9u4+llwxMBqMQDs=",
+        "owner": "nix-community",
+        "repo": "nix-index-database",
+        "rev": "96d6de10eb281b98f5cfcd1841394c03da5df77c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nix-index-database",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1782723713,
@@ -241,6 +261,7 @@
         "hardware": "hardware",
         "helix": "helix",
         "home-manager": "home-manager",
+        "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs_5",
         "plasma-manager": "plasma-manager",
         "systems": "systems"

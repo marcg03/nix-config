@@ -17,6 +17,10 @@
     systems.url = "github:nix-systems/default";
     git-hooks.url = "github:cachix/git-hooks.nix";
     helix.url = "github:marcg03/helix/patch/goto-words";
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -26,6 +30,7 @@
       home-manager,
       plasma-manager,
       systems,
+      nix-index-database,
       ...
     }@inputs:
     let
@@ -73,6 +78,7 @@
               ];
             }
             home-manager.nixosModules.home-manager
+            nix-index-database.nixosModules.default
             (
               { config, ... }:
               {

@@ -31,8 +31,6 @@ in
   ++ existingPaths (map (u: "${nixosModules}/users/${u}.nix") usernames)
   ++ existingPaths (map (u: "${nixosModules}/${hostname}/users/${u}.nix") usernames);
 
-  programs.nix-index.enable = true;
-
   nix.settings = {
     substituters = [ "https://cache.nixos-cuda.org" ];
     trusted-public-keys = [ "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M=" ];
