@@ -97,6 +97,7 @@ in
     localsend.enable = true;
     gnupg.agent.enable = true;
     firefox.enable = true;
+    nix-index-database.comma.enable = true;
   };
 
   nixpkgs.config.allowUnfree = true;
