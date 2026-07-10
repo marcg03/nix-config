@@ -13,6 +13,7 @@
     "${nhModules}/programs/direnv.nix"
     "${nhModules}/programs/discord.nix"
     "${nhModules}/programs/electrum.nix"
+    "${nhModules}/programs/element.nix"
     "${nhModules}/programs/eza.nix"
     "${nhModules}/programs/foot.nix"
     "${nhModules}/programs/fzf.nix"
