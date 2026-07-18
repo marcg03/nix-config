@@ -24,7 +24,6 @@ in
     "${nixosModules}/${hostname}/gaming.nix"
     "${nixosModules}/podman.nix"
     # "${nixosModules}/virtualbox.nix"
-    "${nixosModules}/monero.nix"
     "${nixosModules}/appimage.nix"
     "${nixosModules}/${hostname}/wireguard.nix"
   ]
@@ -80,11 +79,6 @@ in
   services.xserver.xkb = {
     layout = "us";
     variant = "";
-  };
-
-  services.umurmur = {
-    enable = true;
-    openFirewall = true;
   };
 
   services.openvpn.servers = {
