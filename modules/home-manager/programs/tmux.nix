@@ -48,5 +48,15 @@
           panes:
             - lazygit
     '';
+
+    "tmuxp/nix-cram.yaml".text = ''
+      session_name: nix-cram
+      start_directory: "~/src/dev/nix-cram"
+      windows:
+        - window_name: zsh
+          focus: true
+          panes:
+            - blank
+    '';
   };
 }
