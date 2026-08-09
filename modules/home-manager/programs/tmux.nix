@@ -25,4 +25,28 @@
       bind % split-window -h -c "#{pane_current_path}"
     '';
   };
+
+  xdg.configFile = {
+    "tmuxp/stlc.yaml".text = ''
+      session_name: stlc
+      start_directory: "~/src/dev/stlc"
+      windows:
+        - window_name: zsh
+          panes:
+            - blank
+    '';
+
+    "tmuxp/nix-config.yaml".text = ''
+      session_name: nix-config
+      start_directory: "~/nix-config"
+      windows:
+        - window_name: editor
+          focus: true
+          panes:
+            - hx
+        - window_name: git
+          panes:
+            - lazygit
+    '';
+  };
 }
