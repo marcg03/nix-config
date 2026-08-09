@@ -8,20 +8,19 @@
     clock24 = true;
     baseIndex = 1;
     newSession = true;
-    keyMode = "vi";
+    keyMode = "emacs";
     mouse = true;
-    shortcut = "space";
+    shortcut = "b";
+    tmuxp.enable = true;
     sensibleOnTop = true;
-    tmuxinator.enable = true;
     plugins = with pkgs; [
       tmuxPlugins.tokyo-night-tmux
       tmuxPlugins.yank
-      tmuxPlugins.sensible
-      tmuxPlugins.vim-tmux-navigator
     ];
     extraConfig = ''
       set -g renumber-windows on
 
+      bind c new-window -c "#{pane_current_path}"
       bind '"' split-window -v -c "#{pane_current_path}"
       bind % split-window -h -c "#{pane_current_path}"
     '';
