@@ -12,6 +12,16 @@
     ];
     gamescopeSession.enable = true;
   };
+
+  environment.systemPackages = with pkgs; [
+    protontricks
+  ];
+
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+
   programs.gamescope = {
     enable = true;
     capSysNice = true;
