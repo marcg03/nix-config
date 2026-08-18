@@ -1,0 +1,8 @@
+keys:
+  - &thinkpad-x230 age16paldv72ygw2gg96cfce0g6m8hzqjscf377lu9fy7r06tsw3dy8shlj87k
+  - &lenovo-loq age1z4ctskdejws3kruucz9m3369jwlaj2tpdk3sr5fjv3fjs9ssh5hsjjrmjc
+
+creation_rules:
+  - path_regex: ^secrets/.*\.(ya?ml|json|env|ini|bin)$
+    key_groups:
+      - age: [*thinkpad-x230, *lenovo-loq]

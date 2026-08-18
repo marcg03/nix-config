@@ -1,0 +1,12 @@
+{ config, self, ... }:
+{
+  sops.secrets."wifi/thinkpad-x230/home" = {
+    format = "binary";
+    sopsFile = "${self}/secrets/wifi/thinkpad-x230/home.nmconnection.bin";
+    path = "/run/NetworkManager/system-connections/home.nmconnection";
+    restartUnits = [ "NetworkManager.service" ];
+  };
+
+  environment.etc."NetworkManager/system-connections/home.nmconnection".source =
+    config.sops.secrets."wifi/thinkpad-x230/home".path;
+}
