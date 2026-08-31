@@ -29,6 +29,8 @@
         "http://speedrun.com"
         "https://linkedin.com"
         "http://linkedin.com"
+        "https://europa.eu"
+        "http://europa.eu"
       ];
       Locked = true;
     };
