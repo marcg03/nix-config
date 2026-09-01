@@ -31,6 +31,8 @@
         "http://linkedin.com"
         "https://europa.eu"
         "http://europa.eu"
+        "https://www.stepstone.de"
+        "http://www.stepstone.de"
       ];
       Locked = true;
     };
