@@ -46,6 +46,8 @@ in
     "${self}/modules/nixos/services/tlp.nix"
 
     "${self}/modules/nixos/programs/gnupg.nix"
+
+    (import "${self}/modules/nixos/restic.nix" "thinkpad-x230")
   ];
 
   nixpkgs.hostPlatform = "x86_64-linux";

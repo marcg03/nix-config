@@ -45,6 +45,8 @@ in
     "${self}/modules/nixos/programs/gnupg.nix"
 
     "${self}/modules/nixos/lenovo-loq/nvidia.nix"
+
+    (import "${self}/modules/nixos/restic.nix" "lenovo-loq")
   ];
 
   hardware.facter.reportPath = "${self}/facter/lenovo-loq.json";
