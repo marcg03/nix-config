@@ -2,12 +2,6 @@
   programs.librewolf = {
     enable = true;
 
-    settings = {
-      "privacy.clearOnShutdown_v2.siteSettings" = false;
-      "privacy.clearOnShutdown.siteSettings" = false;
-    };
-
-
     profiles.personal = {
       id = 0;
       isDefault = true;
