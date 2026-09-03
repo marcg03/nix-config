@@ -37,6 +37,7 @@ in
     (import "${self}/modules/nixos/networking.nix" "lenovo-loq")
 
     "${self}/modules/nixos/desktop-environment.nix"
+    "${self}/modules/nixos/thinkpad-x230/bluetooth.nix"
 
     "${self}/modules/nixos/services/openssh.nix"
     "${self}/modules/nixos/services/tlp.nix"
