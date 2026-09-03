@@ -159,28 +159,29 @@
   fileSystems."/host".neededForBoot = true;
   fileSystems."/cache".neededForBoot = true;
 
-  boot.initrd.systemd.enable = true;
-
-  boot.initrd.systemd.services.ephemeral-unlock =
+  boot.initrd.systemd =
     let
       ephemeralUnit = "${utils.escapeSystemdPath "/dev/pool/ephemeral"}.device";
+      mkfsExt4 = lib.getExe' pkgs.e2fsprogs "mkfs.ext4";
     in
     {
-      description = "Open ephemeral root";
-      wantedBy = [ "initrd-root-device.target" ];
-      before = [ "sysroot.mount" ];
-      after = [
-        "systemd-hibernate-resume.service"
-        ephemeralUnit
-      ];
-      requires = [ ephemeralUnit ];
-      unitConfig.DefaultDependencies = false;
-      serviceConfig = {
-        Type = "oneshot";
-        RemainAfterExit = true;
-        ExecStart = "${pkgs.e2fsprogs}/bin/mkfs.ext4 -q -F /dev/pool/ephemeral";
+      enable = true;
+      services.ephemeral-unlock = {
+        description = "Open ephemeral root";
+        wantedBy = [ "initrd-root-device.target" ];
+        before = [ "sysroot.mount" ];
+        after = [
+          "systemd-hibernate-resume.service"
+          ephemeralUnit
+        ];
+        requires = [ ephemeralUnit ];
+        unitConfig.DefaultDependencies = false;
+        serviceConfig = {
+          Type = "oneshot";
+          RemainAfterExit = true;
+          ExecStart = "${mkfsExt4} -q -F /dev/pool/ephemeral";
+        };
       };
+      storePaths = [ mkfsExt4 ];
     };
-
-  boot.initrd.systemd.storePaths = [ "${pkgs.e2fsprogs}/bin/mkfs.ext4" ];
 }
