@@ -7,35 +7,6 @@
       "privacy.clearOnShutdown.siteSettings" = false;
     };
 
-    policies.Cookies = {
-      Allow = [
-        "https://google.com"
-        "http://google.com"
-        "https://youtube.com"
-        "http://youtube.com"
-        "https://claude.ai"
-        "http://claude.ai"
-        "https://twitch.tv"
-        "http://twitch.tv"
-        "https://github.com"
-        "http://github.com"
-        "https://tuta.com"
-        "http://tuta.com"
-        "https://codeberg.org"
-        "http://codeberg.org"
-        "https://nixos.org"
-        "http://nixos.org"
-        "https://speedrun.com"
-        "http://speedrun.com"
-        "https://linkedin.com"
-        "http://linkedin.com"
-        "https://europa.eu"
-        "http://europa.eu"
-        "https://www.stepstone.de"
-        "http://www.stepstone.de"
-      ];
-      Locked = true;
-    };
 
     profiles.personal = {
       id = 0;
