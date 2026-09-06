@@ -13,6 +13,7 @@ user:
     extraCompatPackages = with pkgs; [ proton-ge-bin ];
     gamescopeSession.enable = true;
     protontricks.enable = true;
+    extraPackages = with pkgs; [ mangohud ];
   };
 
   hardware.graphics = {
