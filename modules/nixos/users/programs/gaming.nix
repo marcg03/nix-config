@@ -19,11 +19,6 @@ user:
     enable32Bit = true;
   };
 
-  programs.gamescope = {
-    enable = true;
-    capSysNice = true;
-  };
-
   programs.gamemode = {
     enable = true;
     settings = {
