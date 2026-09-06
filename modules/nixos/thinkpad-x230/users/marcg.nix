@@ -20,7 +20,7 @@ in
     (callUserModule "${self}/modules/nixos/users/programs/pass.nix")
     (callUserModule "${self}/modules/nixos/users/programs/plasma.nix")
     (callUserModule "${self}/modules/nixos/users/programs/starship.nix")
-    (callUserModule "${self}/modules/nixos/users/programs/steam.nix")
+    (callUserModule "${self}/modules/nixos/users/programs/gaming.nix")
     (callUserModule "${self}/modules/nixos/users/programs/tmux.nix")
     (callUserModule "${self}/modules/nixos/users/programs/vesktop.nix")
     (callUserModule "${self}/modules/nixos/users/programs/yazi.nix")
