@@ -1,10 +1,17 @@
 user:
-{ pkgs, lib, ... }:
+{
+  self,
+  pkgs,
+  lib,
+  ...
+}:
 {
   allowUnfreeList = [
     "steam"
     "steam-unwrapped"
   ];
+
+  home-manager.users.${user}.imports = [ "${self}/modules/home-manager/programs/umu.nix" ];
 
   programs.steam = {
     enable = true;
@@ -43,6 +50,7 @@ user:
       ".local/share/Steam"
       ".steam"
       ".factorio"
+      ".local/share/umu"
     ];
   };
 }
