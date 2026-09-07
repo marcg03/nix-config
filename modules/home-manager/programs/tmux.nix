@@ -25,19 +25,4 @@
       bind % split-window -h -c "#{pane_current_path}"
     '';
   };
-
-  xdg.configFile = {
-    "tmuxp/nix-config.yaml".text = ''
-      session_name: nix-config
-      start_directory: "~/nix-config"
-      windows:
-        - window_name: editor
-          focus: true
-          panes:
-            - hx
-        - window_name: git
-          panes:
-            - lazygit
-    '';
-  };
 }
