@@ -12,6 +12,7 @@ in
   imports = [
     (callUserModule "${self}/modules/nixos/users/programs/direnv.nix")
     (callUserModule "${self}/modules/nixos/users/programs/foot.nix")
+    (callUserModule "${self}/modules/nixos/users/programs/gaming.nix")
     (callUserModule "${self}/modules/nixos/users/programs/git.nix")
     (callUserModule "${self}/modules/nixos/users/programs/gpg.nix")
     (callUserModule "${self}/modules/nixos/users/programs/helix.nix")
@@ -20,7 +21,6 @@ in
     (callUserModule "${self}/modules/nixos/users/programs/pass.nix")
     (callUserModule "${self}/modules/nixos/users/programs/plasma.nix")
     (callUserModule "${self}/modules/nixos/users/programs/starship.nix")
-    (callUserModule "${self}/modules/nixos/users/programs/gaming.nix")
     (callUserModule "${self}/modules/nixos/users/programs/tmux.nix")
     (callUserModule "${self}/modules/nixos/users/programs/vesktop.nix")
     (callUserModule "${self}/modules/nixos/users/programs/yazi.nix")
