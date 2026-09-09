@@ -2,47 +2,92 @@
   programs.librewolf = {
     enable = true;
 
-    profiles.personal = {
-      id = 0;
-      isDefault = true;
+    profiles = {
+      personal = {
+        id = 0;
+        isDefault = true;
 
-      settings = {
-        "browser.toolbars.bookmarks.visibility" = "always";
-        "browser.startup.page" = 0;
+        settings = {
+          "browser.toolbars.bookmarks.visibility" = "always";
+          "browser.startup.page" = 0;
+        };
+
+        bookmarks = {
+          force = true;
+          settings = [
+            {
+              name = "Nix";
+              toolbar = true;
+              bookmarks = [
+                {
+                  name = "Discourse";
+                  url = "https://discourse.nixos.org";
+                }
+                {
+                  name = "Packages";
+                  url = "https://search.nixos.org/packages";
+                  keyword = "np";
+                }
+              ];
+            }
+            {
+              name = "Claude";
+              url = "https://claude.ai";
+              keyword = "cl";
+            }
+            {
+              name = "Codeberg";
+              url = "https://codeberg.org";
+            }
+            {
+              name = "Tuta";
+              url = "https://app.tuta.com";
+            }
+          ];
+        };
       };
 
-      bookmarks = {
-        force = true;
-        settings = [
-          {
-            name = "Nix";
-            toolbar = true;
-            bookmarks = [
-              {
-                name = "Discourse";
-                url = "https://discourse.nixos.org";
-              }
-              {
-                name = "Packages";
-                url = "https://search.nixos.org/packages";
-                keyword = "np";
-              }
-            ];
-          }
-          {
-            name = "Claude";
-            url = "https://claude.ai";
-            keyword = "cl";
-          }
-          {
-            name = "Codeberg";
-            url = "https://codeberg.org";
-          }
-          {
-            name = "Tuta";
-            url = "https://app.tuta.com";
-          }
-        ];
+      school = {
+        id = 1;
+
+        settings = {
+          "browser.toolbars.bookmarks.visibility" = "always";
+          "browser.startup.page" = 0;
+        };
+
+        bookmarks = {
+          force = true;
+          settings = [
+            {
+              name = "Nix";
+              toolbar = true;
+              bookmarks = [
+                {
+                  name = "Discourse";
+                  url = "https://discourse.nixos.org";
+                }
+                {
+                  name = "Packages";
+                  url = "https://search.nixos.org/packages";
+                  keyword = "np";
+                }
+              ];
+            }
+            {
+              name = "Claude";
+              url = "https://claude.ai";
+              keyword = "cl";
+            }
+            {
+              name = "Codeberg";
+              url = "https://codeberg.org";
+            }
+            {
+              name = "Tuta";
+              url = "https://app.tuta.com";
+            }
+          ];
+        };
       };
     };
   };
