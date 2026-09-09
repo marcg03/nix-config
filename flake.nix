@@ -31,6 +31,10 @@
       inputs.nixpkgs.follows = "";
       inputs.home-manager.follows = "";
     };
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -43,6 +47,7 @@
       nixos-hardware,
       disko,
       sops-nix,
+      nix-index-database,
       ...
     }@inputs:
     let
