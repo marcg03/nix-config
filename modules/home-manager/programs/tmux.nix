@@ -5,6 +5,7 @@
 {
   programs.tmux = {
     enable = true;
+    historyLimit = 50000;
     clock24 = true;
     baseIndex = 1;
     newSession = true;
