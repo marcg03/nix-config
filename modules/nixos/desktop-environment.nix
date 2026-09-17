@@ -1,7 +1,10 @@
+{ pkgs, ... }:
 {
   services = {
     desktopManager.plasma6.enable = true;
     displayManager.plasma-login-manager.enable = true;
     power-profiles-daemon.enable = false;
   };
+
+  environment.systemPackages = with pkgs; [ wl-clipboard ];
 }
