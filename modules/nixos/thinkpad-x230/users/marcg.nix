@@ -27,8 +27,8 @@ in
     (callUserModule "${self}/modules/nixos/users/programs/tmux.nix")
     (callUserModule "${self}/modules/nixos/users/programs/vesktop.nix")
     (callUserModule "${self}/modules/nixos/users/programs/yazi.nix")
-    (callUserModule "${self}/modules/nixos/users/services/printing.nix")
     (callUserModule "${self}/modules/nixos/users/programs/zsh.nix")
+    (callUserModule "${self}/modules/nixos/users/services/printing.nix")
   ];
 
   environment.persistence = {
