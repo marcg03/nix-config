@@ -22,6 +22,7 @@ in
     (callUserModule "${self}/modules/nixos/users/programs/okular.nix")
     (callUserModule "${self}/modules/nixos/users/programs/pass.nix")
     (callUserModule "${self}/modules/nixos/users/programs/plasma.nix")
+    (callUserModule "${self}/modules/nixos/users/programs/prism-launcher.nix")
     (callUserModule "${self}/modules/nixos/users/programs/starship.nix")
     (callUserModule "${self}/modules/nixos/users/programs/tmux.nix")
     (callUserModule "${self}/modules/nixos/users/programs/vesktop.nix")
