@@ -1,7 +1,5 @@
 { config, lib, ... }:
 {
-  nixpkgs.config.cudaSupport = true;
-
   allowUnfreeList = [
     "nvidia-x11"
     "nvidia-settings"
