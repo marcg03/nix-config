@@ -51,6 +51,7 @@ user:
       ".steam"
       ".factorio"
       ".local/share/umu"
+      ".local/share/7DaysToDie"
     ];
   };
 }
