@@ -10,6 +10,7 @@ let
 in
 {
   imports = [
+    (callUserModule "${self}/modules/nixos/users/programs/anki.nix")
     (callUserModule "${self}/modules/nixos/users/programs/direnv.nix")
     (callUserModule "${self}/modules/nixos/users/programs/foot.nix")
     (callUserModule "${self}/modules/nixos/users/programs/gaming.nix")
