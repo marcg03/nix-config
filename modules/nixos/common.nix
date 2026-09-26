@@ -43,4 +43,14 @@
 
     optimise.automatic = true;
   };
+
+  # NOTE: Using the vendored `ankiAddons.crowdanki` until this
+  # [PR](https://github.com/NixOS/nixpkgs/pull/567116) gets merged
+  nixpkgs.overlays = [
+    (final: prev: {
+      ankiAddons = prev.ankiAddons // {
+        crowdanki = final.callPackage "${self}/vendor/crowdanki" { };
+      };
+    })
+  ];
 }
