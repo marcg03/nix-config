@@ -21,6 +21,8 @@ in
 
     "${self}/modules/nixos/nebula"
 
+    "${self}/modules/nixos/hetzner-cx23/services/xandikos.nix"
+
     sops-nix.nixosModules.sops
     {
       sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
