@@ -47,6 +47,8 @@ in
 
     "${self}/modules/nixos/programs/gnupg.nix"
 
+    "${self}/modules/nixos/nebula"
+
     (import "${self}/modules/nixos/restic.nix" "thinkpad-x230")
   ];
 

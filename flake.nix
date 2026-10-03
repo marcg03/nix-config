@@ -74,6 +74,12 @@
             "${self}/modules/nixos/nixos-installer/configuration.nix"
           ];
         };
+        "hetzner-cx23" = lib.nixosSystem {
+          modules = [
+            "${self}/modules/nixos/hetzner-cx23/configuration.nix"
+          ];
+          specialArgs = { inherit self inputs; };
+        };
       };
     }
     // flake-utils.lib.eachDefaultSystem (
@@ -88,6 +94,29 @@
             age
             ssh-to-age
           ];
+        };
+        packages.nebula-client-config = (pkgs.formats.yaml { }).generate "nebula-client.yml" {
+          pki.ca = builtins.readFile "${self}/modules/nixos/nebula/ca.crt";
+          static_host_map."10.200.0.1" = [ "vps.marcgrec.com:4242" ];
+          lighthouse.hosts = [ "10.200.0.1" ];
+          listen.port = 0;
+          punchy.punch = true;
+          firewall = {
+            outbound = [
+              {
+                port = "any";
+                proto = "any";
+                host = "any";
+              }
+            ];
+            inbound = [
+              {
+                port = "any";
+                proto = "any";
+                group = "trusted";
+              }
+            ];
+          };
         };
       }
     );
