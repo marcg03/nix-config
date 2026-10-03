@@ -45,6 +45,7 @@
               launchers = [
                 "applications:systemsettings.desktop"
                 "applications:org.kde.dolphin.desktop"
+                "applications:thunderbird.desktop"
                 "applications:librewolf.desktop"
                 "applications:foot.desktop"
               ];
