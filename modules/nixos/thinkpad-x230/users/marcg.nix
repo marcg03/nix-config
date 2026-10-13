@@ -19,6 +19,7 @@ in
     (callUserModule "${self}/modules/nixos/users/programs/helix.nix")
     (callUserModule "${self}/modules/nixos/users/programs/lazygit.nix")
     (callUserModule "${self}/modules/nixos/users/programs/librewolf.nix")
+    (callUserModule "${self}/modules/nixos/users/programs/firefox.nix")
     (callUserModule "${self}/modules/nixos/users/programs/nix-index.nix")
     (callUserModule "${self}/modules/nixos/users/programs/okular.nix")
     (callUserModule "${self}/modules/nixos/users/programs/pass.nix")
