@@ -1,7 +1,7 @@
 {
   description = "A flake with NixOS configurations";
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     direnv-instant.url = "github:Mic92/direnv-instant";
     systems.url = "github:nix-systems/default";
