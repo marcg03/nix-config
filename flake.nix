@@ -69,9 +69,21 @@
           ];
           specialArgs = { inherit self inputs; };
         };
+        "surface-pro-3" = lib.nixosSystem {
+          modules = [
+            "${self}/modules/nixos/common.nix"
+            "${self}/modules/nixos/surface-pro-3/configuration.nix"
+          ];
+          specialArgs = { inherit self inputs; };
+        };
         "nixos-installer" = lib.nixosSystem {
           modules = [
             "${self}/modules/nixos/nixos-installer/configuration.nix"
+          ];
+        };
+        "surface-installer" = lib.nixosSystem {
+          modules = [
+            "${self}/modules/nixos/nixos-installer/configuration-special.nix"
           ];
         };
         "hetzner-cx23" = lib.nixosSystem {
