@@ -131,8 +131,6 @@
   fileSystems."/host".neededForBoot = true;
   fileSystems."/cache".neededForBoot = true;
 
-  boot.initrd.systemd.enable = true;
-
   boot.initrd.systemd.services.ephemeral-unlock =
     let
       ephemeralUnit = "${utils.escapeSystemdPath "/dev/pool/ephemeral"}.device";

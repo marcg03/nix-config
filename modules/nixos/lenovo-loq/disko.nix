@@ -165,7 +165,6 @@
       mkfsExt4 = lib.getExe' pkgs.e2fsprogs "mkfs.ext4";
     in
     {
-      enable = true;
       services.ephemeral-unlock = {
         description = "Open ephemeral root";
         wantedBy = [ "initrd-root-device.target" ];
