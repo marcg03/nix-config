@@ -47,6 +47,7 @@ in
     "${self}/modules/nixos/lenovo-loq/nvidia.nix"
 
     "${self}/modules/nixos/nebula"
+    "${self}/modules/nixos/wireguard"
 
     (import "${self}/modules/nixos/restic.nix" "lenovo-loq")
   ];

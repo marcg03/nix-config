@@ -7,6 +7,9 @@ creation_rules:
   - path_regex: ^secrets/nebula/(thinkpad-x230|lenovo-loq)\.bin$
     key_groups:
       - age: [*thinkpad-x230, *lenovo-loq]
+  - path_regex: ^secrets/wireguard/ubb\.bin$
+    key_groups:
+      - age: [*thinkpad-x230, *lenovo-loq]
   - path_regex: ^secrets/.*\.(ya?ml|json|env|ini|bin)$
     key_groups:
       - age: [*thinkpad-x230, *lenovo-loq, *hetzner-cx23]
