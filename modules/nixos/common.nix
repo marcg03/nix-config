@@ -1,4 +1,7 @@
 { self, pkgs, ... }: {
+  # store the git hash as metadata attatched to the current generation
+  system.configurationRevision = self.rev or self.dirtyRev or null;
+
   imports = [ "${self}/modules/nixos/allow-unfree.nix" ];
 
   boot.loader.systemd-boot.enable = true;
