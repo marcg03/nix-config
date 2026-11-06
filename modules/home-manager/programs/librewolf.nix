@@ -2,6 +2,8 @@
   programs.librewolf = {
     enable = true;
 
+    policies.Permissions.Notifications.Block = [ "https://claude.ai" ];
+
     profiles = {
       personal = {
         id = 0;
