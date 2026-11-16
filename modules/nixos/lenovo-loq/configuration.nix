@@ -52,7 +52,10 @@ in
     (import "${self}/modules/nixos/restic.nix" "lenovo-loq")
   ];
 
-  hardware.facter.reportPath = "${self}/facter/lenovo-loq.json";
+  hardware.facter = {
+    reportPath = "${self}/facter/lenovo-loq.json";
+    detected.dhcp.enable = false;
+  };
 
   system.stateVersion = "26.05";
 }
