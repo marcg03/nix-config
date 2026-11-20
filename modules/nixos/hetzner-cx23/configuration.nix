@@ -23,6 +23,8 @@ in
 
     "${self}/modules/nixos/hetzner-cx23/services/xandikos.nix"
 
+    "${self}/modules/nixos/hetzner-cx23/raylib-sites.nix"
+
     sops-nix.nixosModules.sops
     {
       sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
