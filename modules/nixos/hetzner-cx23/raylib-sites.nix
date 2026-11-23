@@ -21,6 +21,7 @@ in
         add_header Cache-Control "no-cache";
       '';
       locations."= /".extraConfig = "autoindex on;";
+      locations."= /alin/".extraConfig = "autoindex on;";
     };
   };
 
